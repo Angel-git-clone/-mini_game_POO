@@ -44,19 +44,20 @@ class HumanPlayer < Player #Hériter la class
   end
 
   def compute_damage
-    rand(1..6) * @weapon_level
+    rand(1..6) * @weapons_level 
   end
 
   def search_weapon
     new_weapon = rand(1..6)
     
-    return "Tu as trouvé une arme de niveau #{new_weapon}"
+    puts "Tu as trouvé une arme de niveau #{new_weapon}"
     
     if new_weapon > @weapons_level
       puts "Youhou ! elle est meilleure que ton arme actuelle : Prends la!" 
     else
       puts "M@*#$... elle n'est pas mieux que ton arme actuelle..."
     end
+    @weapons_level = new_weapon
 
   end
 
@@ -65,7 +66,7 @@ class HumanPlayer < Player #Hériter la class
 
    if health_pack == 1
       puts "Tu n'as rien trouvé...tristesse"
-   elsif 2 <= health_pack <= 5
+   elsif 2 <= health_pack && health_pack <= 5
       @life_points = @life_points + 50
 
       if @life_points > 100 
